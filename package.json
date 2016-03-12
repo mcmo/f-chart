@@ -1,0 +1,12 @@
+{
+  "name": "f-chart",
+  "version": "1.0.0",
+  "description": "Website: <a href=\"https://f-chart.herokuapp.com/\" target=\"_blank\">f-chart.herokuapp.com</a>",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
