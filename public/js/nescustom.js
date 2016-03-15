@@ -1,4 +1,4 @@
-var client = new nes.Client("wss://fcc-mcmo.c9users.io:8080");
+var client = new nes.Client("wss://f-chart.herokuapp.com");
 
 client.connect(function(err) {
   if (err) return console.log(err);
