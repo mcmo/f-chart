@@ -14,7 +14,7 @@
     {{#each symbols}}
     <div class="alert alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong><span class="symbol">{{this}}</span></strong>
+      <strong><span class="symbol {{this}}">{{this}}</span></strong>
     </div>
     {{/each}}
     <div class="alert add-stock" role="alert">
@@ -31,6 +31,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
   <script src="assets/js/spin.min.js"></script>
   <script src="assets/js/index.js"></script>
+  <script src="assets/js/nesclient.js"></script>
+  <script src="assets/js/nescustom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="//code.highcharts.com/stock/highstock.js"></script>
   <script>
@@ -38,7 +40,6 @@
     {{#each symbols}}
       names.push('{{this}}');
     {{/each}}
-    console.log(names);
   </script>
   <script src="assets/js/chart.js"></script>
 </body>

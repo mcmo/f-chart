@@ -3,8 +3,6 @@
 var Chart = (function() {
   var seriesOptions = [],
     seriesCounter = 0;
-    //names = ['MSFT', 'AAPL'];
-    console.log('names', names);
 
   /**
    * Create the chart when all data is loaded
@@ -71,6 +69,7 @@ var Chart = (function() {
 
         if (addSeries) {
           var chart = $('#container').highcharts();
+          spinner.stop();
           return chart.addSeries(seriesOptions[0]);
         }
 

@@ -1,6 +1,9 @@
 'use strict'
 require('dotenv').config()
 const Hapi = require('hapi')
+const Inert = require('inert')
+const Vision = require('vision')
+const Nes = require('nes')
 const mongo = require('mongodb').MongoClient
 
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname
@@ -12,9 +15,25 @@ server.connection({
   port: process.env.PORT || 8080
 })
 
-server.register([require('inert'), require('vision')], (err) => {
+// options for using the socket on this app
+var options = {
+  onConnection: function(socket) {
+    // send message to all (except 1 connecting) clients
+    //server.broadcast("welcome everybody!!!")
+  },
+  onMessage: function(socket, symbol, next) {
+    // send message to all clients when receive message
+    console.log('onMessage', symbol)
+    server.publish('/', symbol)
+  }
+}
+
+server.register([Inert, Vision, {register: Nes, options: options}], (err) => {
 
   if (err) throw err
+  
+  // the server subscription path
+  server.subscription("/")
 
   server.views({
     engines: {
@@ -55,7 +74,7 @@ server.register([require('inert'), require('vision')], (err) => {
   }])
 })
 
-server.start(() => console.log('Started'))
+server.start(() => console.log("server starting at:" + server.info.uri))
 
 function getSymbols(reply) {
   mongo.connect(uri, function(err, db) {
@@ -66,7 +85,7 @@ function getSymbols(reply) {
       if (err) throw err
       if (result) {
         console.log(result.stocks)
-        reply.view('index', {
+        return reply.view('index', {
           symbols: result.stocks
         })
       }
@@ -86,8 +105,8 @@ function addSymbol(symbol, reply) {
     }, function(err, result) {
       if (err) throw err
       if (result) {
-        console.log(result.result)
-        reply('POST to add received!')
+        server.publish('/', {option: 'add', symbol: symbol})
+        return reply('POST to add received!')
       }
     })
   })
@@ -104,9 +123,9 @@ function deleteSymbol(symbol, reply) {
       }
     }, function(err, result){
       if (err) throw err
-      console.log(result)
       if (result){
-        reply('POST to delete received')        
+        server.publish('/', {option: 'delete', symbol: symbol})
+        return reply('POST to delete received')        
       }
     })
   })
