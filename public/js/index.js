@@ -1,3 +1,4 @@
+var spinner;
 $(function() {
   $('.add').click(function() {
     var newStock = $('#stock-input').val().toUpperCase()
@@ -20,4 +21,8 @@ $(function() {
       console.log("Data: " + data + "\nStatus: " + status)
     })
   })
+  
+  var opts = {top: '20%'}
+  var target = document.getElementById('container')
+  spinner = new Spinner(opts).spin(target);
 })

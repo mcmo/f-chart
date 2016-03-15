@@ -36,12 +36,6 @@ server.register([require('inert'), require('vision')], (err) => {
     path: '/',
     method: 'GET',
     handler: function(request, reply) {
-      reply('hapi is happy')
-    }
-  }, {
-    path: '/chart',
-    method: 'GET',
-    handler: function(request, reply) {
       getSymbols(reply)
     }
   }, {

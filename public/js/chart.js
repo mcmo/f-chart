@@ -78,6 +78,7 @@ var Chart = (function() {
         seriesCounter += 1;
         if (seriesCounter === names.length) {
           createChart();
+          spinner.stop();
         }
       }); // getJSON
     });
