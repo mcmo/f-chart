@@ -8,5 +8,13 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "handlebars": "^4.0.5",
+    "hapi": "^13.2.1",
+    "inert": "^3.2.0",
+    "mongodb": "^2.1.8",
+    "vision": "^4.0.1"
+  }
 }

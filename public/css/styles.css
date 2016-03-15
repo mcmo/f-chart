@@ -1,0 +1,31 @@
+body {
+  font-size: 18px;
+  padding: 0 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  /*background-color: black;*/
+}
+
+#container {
+  margin: 20px;
+}
+
+input {
+  font-size: 20px;
+}
+
+.alert {
+  min-width: 100px;
+  max-width: 300px;
+  border: 1px solid gray !important;
+  float: left;
+  margin-right: 10px;
+}
+.add-stock {
+  clear: both;
+  height: 100px;
+}
+
+.input-group {
+  margin-top: 5px;
+}

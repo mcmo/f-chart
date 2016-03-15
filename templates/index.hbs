@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>FCC: Chart the Stock Market</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+</head>
+
+<body>
+  <div id="container" style="height: 400px; min-width: 310px"></div>
+  <div id="stocks">
+    {{#each symbols}}
+    <div class="alert alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong><span class="symbol">{{this}}</span></strong>
+    </div>
+    {{/each}}
+    <div class="alert add-stock" role="alert">
+      <div>Syncs in realtime across clients</div>
+      <div class="input-group">
+        <input type="text" id="stock-input" class="form-control" placeholder="Stock Symbol">
+        <span class="input-group-btn">
+          <button class="btn btn-primary add" type="button">Add</button>
+        </span>
+      </div><!-- /input-group -->
+    </div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="//code.highcharts.com/stock/highstock.js"></script>
+  <script>
+    var names = [];
+    {{#each symbols}}
+      names.push('{{this}}');
+    {{/each}}
+    console.log(names);
+  </script>
+  <script src="assets/js/chart.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>
