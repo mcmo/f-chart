@@ -17,15 +17,18 @@
       <strong><span class="symbol {{this}}">{{this}}</span></strong>
     </div>
     {{/each}}
-    <div class="alert add-stock" role="alert">
-      <div>Syncs in realtime across clients</div>
-      <div class="input-group">
-        <input type="text" id="stock-input" class="form-control" placeholder="Stock Symbol">
-        <span class="input-group-btn">
-          <button class="btn btn-primary add" type="button">Add</button>
+    <form>
+      <div class="alert add-stock" role="alert">
+        <div>Syncs in realtime across clients</div>
+        <div class="input-group">
+          <input type="text" id="stock-input" class="form-control" placeholder="Stock Symbol">
+          <span class="input-group-btn">
+          <button class="btn btn-primary add" type="submit">Add</button>
         </span>
-      </div><!-- /input-group -->
-    </div>
+        </div>
+        <!-- /input-group -->
+      </div>
+    </form>
   </div>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>

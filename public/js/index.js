@@ -29,7 +29,8 @@ var deleteSymbol = function(symbol) {
 }
 
 $(function() {
-  $('.add').click(function() {
+  $('form').submit(function(e) {
+    e.preventDefault()
     var newSymbol = $('#stock-input').val().toUpperCase()
 
     if (names.indexOf(newSymbol) === -1) {
