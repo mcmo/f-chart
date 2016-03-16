@@ -51,19 +51,21 @@ var Chart = (function() {
         return num < 10 ? '0' + num : num;
       }
 
-      var url = 'https://query.yahooapis.com/v1/public/yql';
+      //var url = 'https://query.yahooapis.com/v1/public/yql';
       var startDate = '2015-01-01';
       var end = new Date();
       var endDate = end.getFullYear() + '-' + addZero(end.getMonth() + 1) + '-' + addZero(end.getDate() - 1);
-      var data = encodeURIComponent('select Date,Adj_Close from yahoo.finance.historicaldata where symbol in ("' + name + '") and startDate = "' + startDate + '" and endDate = "' + endDate + '"');
-      $.getJSON(url, 'q=' + data + "&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json", function(data) {
-        var quotes = data.query.results.quote;
-        var datePrices = quotes.map(function(d) {
-          return [new Date(d.Date).getTime(), +d.Adj_Close];
+      var url = `https://www.quandl.com/api/v3/datasets/WIKI/${name}.json?api_key=vep4JRxxBaTjGUNmEacJ&column_index=11&start_date=${startDate}&end_date=${endDate}&order=asc`;
+      $.getJSON(url, function(result){
+        var quotes = result.dataset.data;
+        quotes = quotes.map(function(q) {
+          return [new Date(q[0]).getTime(), q[1]];
         });
+        //console.log(quotes);
         seriesOptions[i] = {
           name: name,
-          data: datePrices.reverse()
+          //data: datePrices.reverse()
+          data: quotes
         };
         console.log(seriesOptions[i])
 

@@ -8,14 +8,14 @@ client.connect(function(err) {
   var handler = function(update) {
     
     if (update.option === 'add') {
-      //console.log('add ' + update.symbol)
+      console.log('add ' + update.symbol)
       if (names.indexOf(update.symbol) === -1) {
         addSymbol(update.symbol)
       }
     }
 
     if (update.option === 'delete') {
-      //console.log('delete', update.symbol)
+      console.log('delete', update.symbol)
       if (names.indexOf(update.symbol) !== -1) {
         $('.' + update.symbol).alert('close')
       }
